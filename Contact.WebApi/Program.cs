@@ -23,7 +23,6 @@ namespace Contact.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    Console.WriteLine("S");
                 });
         
     }
