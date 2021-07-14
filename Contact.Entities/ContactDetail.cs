@@ -14,4 +14,5 @@ namespace Contact.Entities
         public int Type { get; set; }
         public Contact Contact { get; set; }
     }
+
 }

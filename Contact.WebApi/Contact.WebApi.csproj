@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.25" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Contact.DataAccess\Contact.DataAccess.csproj" />
+    <ProjectReference Include="..\Contact.Entities\Contact.Entities.csproj" />
   </ItemGroup>
 
 </Project>

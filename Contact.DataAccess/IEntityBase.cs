@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Contact.DataAccess
 {
-  public  class IEntityBase<TEntity, TContext> : IEntityRepository<TEntity>
-    where TEntity : class, IEntity, new()
-    where TContext : DbContext, new()
+    public class IEntityBase<TEntity, TContext> : IEntityRepository<TEntity>
+      where TEntity : class, IEntity, new()
+      where TContext : DbContext, new()
     {
         public void Add(TEntity entity)
         {
@@ -54,7 +54,8 @@ namespace Contact.DataAccess
 
         public IQueryable<TEntity> GetQuery()
         {
-            throw new NotImplementedException();
+            var context = new TContext();
+            return context.Set<TEntity>().AsQueryable();
         }
 
         public void Update(TEntity entity)
