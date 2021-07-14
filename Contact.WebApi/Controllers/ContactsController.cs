@@ -27,18 +27,18 @@ namespace Contact.WebApi.Controllers
         public List<ContactModel> Get()
         {
             var data = _contactDal.GetQuery().Include(i => i.ContactDetails).Select(i => new ContactModel
-            {   
+            {
                 Id = i.Id,
                 Name = i.Name,
                 Surname = i.Surname,
                 Birthday = i.Birthday,
                 Company = i.Company,
                 Note = i.Note,
-                ContactDetails = i.ContactDetails.Select(j=>new ContactDetailModel { 
-                ContactId = j.ContactId,
-                Type = j.Type,
-                Value = j.Value,
-                Id = j.Id                         
+                ContactDetails = i.ContactDetails.Select(j => new ContactDetailModel {
+                    ContactId = j.ContactId,
+                    Type = j.Type,
+                    Value = j.Value,
+                    Id = j.Id
                 }).ToList()
 
 
@@ -48,18 +48,33 @@ namespace Contact.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post( ContactModel model)
+        public IActionResult Post(ContactModel model)
         {
-            
-
-
-            if (result.success)
+            var entity = new Entities.Contact
             {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
+                Id = model.Id,
+                Name = model.Name,
+                Surname = model.Surname,
+                Note = model.Note,
+                Birthday = model.Birthday,
+                Company = model.Company,
+                ContactDetails = model.ContactDetails.Select(i => new ContactDetail {
+
+                })ToList();
+
+
+        }.ToList();
+        return Ok();
+    }
+
 
 
     }
+
+            
+        
 }
+
+
+    
+
