@@ -52,6 +52,11 @@ namespace Contact.DataAccess
             }
         }
 
+        public IQueryable<TEntity> GetQuery()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(TEntity entity)
         {
             using (var context = new TContext())

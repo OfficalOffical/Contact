@@ -35,7 +35,7 @@ namespace Contact.WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Contact.WebApi", Version = "v1" });
             });
             services.AddDbContext<PhoneDBContext>();
-            services.AddTransient<IDirectoryDal, DirectoryDal>();
+            services.AddTransient<IContactDal, ContactDal>();
 
 
 

@@ -1,9 +1,8 @@
 ﻿using System;
-using Contact.Entities;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Contact.Core;
 using System.Linq;
+using Contact.Core;
 
 namespace Contact.DataAccess
 {

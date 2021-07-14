@@ -18,9 +18,9 @@ namespace Contact.WebApi.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IDirectoryDal _directoryDal;
+        private readonly IContactDal _directoryDal;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IDirectoryDal directoryDal)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IContactDal directoryDal)
         {
             _logger = logger;
             _directoryDal = directoryDal;
@@ -28,7 +28,7 @@ namespace Contact.WebApi.Controllers
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
-        {
+            {
             var data = _directoryDal.GetList();
 
             var rng = new Random();

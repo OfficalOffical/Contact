@@ -11,7 +11,7 @@ namespace Contact.DataAccess
 {
     public class PhoneDBContext : DbContext
     {
-        public DbSet<Directory> Directory { get; set; }
+        public DbSet<Entities.Contact> Contacts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

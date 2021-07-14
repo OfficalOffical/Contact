@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Contact.DataAccess
 {
-  public  class DirectoryDal:IEntityBase<Directory,PhoneDBContext>, IDirectoryDal
+  public  class ContactDal:IEntityBase<Entities.Contact,PhoneDBContext>, IContactDal
     {
-        //Just Testing Github
+        
         
     }
 }

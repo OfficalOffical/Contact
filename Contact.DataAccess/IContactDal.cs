@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact.DataAccess
 {
-  public interface IDirectoryDal : IEntityRepository<Directory>
+  public interface IContactDal : IEntityRepository<Entities.Contact>
     {
     }
 }
