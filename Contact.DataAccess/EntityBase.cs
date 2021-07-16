@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Contact.DataAccess
 {
-    public class IEntityBase<TEntity, TContext> : IEntityRepository<TEntity>
+    public class EntityBase<TEntity, TContext> : IEntityRepository<TEntity>
       where TEntity : class, IEntity, new()
       where TContext : DbContext, new()
     {
@@ -18,9 +18,15 @@ namespace Contact.DataAccess
         {
             using (var context = new TContext())
             {
-                var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
+
+                //var addedEntity = context.Entry(entity);
+                //addedEntity.State = EntityState.Added;
+
+
+                context.Add(entity);
+
                 context.SaveChanges();
+                
             }
         }
 
@@ -30,7 +36,7 @@ namespace Contact.DataAccess
             {
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
+                    context.SaveChanges();
             }
         }
 
@@ -49,6 +55,7 @@ namespace Contact.DataAccess
                 return filter == null
                     ? context.Set<TEntity>().ToList()
                     : context.Set<TEntity>().Where(filter).ToList();
+
             }
         }
 
@@ -56,6 +63,8 @@ namespace Contact.DataAccess
         {
             var context = new TContext();
             return context.Set<TEntity>().AsQueryable();
+
+
         }
 
         public void Update(TEntity entity)

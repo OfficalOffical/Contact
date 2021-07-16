@@ -1,14 +1,14 @@
 ﻿using Contact.Business;
-using Contact.DataAccess;
 using Contact.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI.Common;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Contact.WebApi.Controllers
 {
@@ -16,33 +16,20 @@ namespace Contact.WebApi.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
-        private readonly IContactDal _contactDal;
+        private readonly IContactService _contactService;
 
-        public ContactsController(IContactDal ContactDal)
+        public ContactsController(IContactService contactService)
         {
-            _contactDal = ContactDal;
+            _contactService=contactService;
         }
 
         [HttpGet]
         public List<ContactModel> Get()
         {
-            var data = _contactDal.GetQuery().Include(i => i.ContactDetails).Select(i => new ContactModel
-            {
-                Id = i.Id,
-                Name = i.Name,
-                Surname = i.Surname,
-                Birthday = i.Birthday,
-                Company = i.Company,
-                Note = i.Note,
-                ContactDetails = i.ContactDetails.Select(j => new ContactDetailModel {
-                    ContactId = j.ContactId,
-                    Type = j.Type,
-                    Value = j.Value,
-                    Id = j.Id
-                }).ToList()
+
+            var data = _contactService.GetList();
 
 
-            }).ToList();
             return data;
 
         }
@@ -50,25 +37,14 @@ namespace Contact.WebApi.Controllers
         [HttpPost]
         public IActionResult Post(ContactModel model)
         {
-            var entity = new Entities.Contact
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Surname = model.Surname,
-                Note = model.Note,
-                Birthday = model.Birthday,
-                Company = model.Company,
-                ContactDetails = model.ContactDetails.Select(i => new ContactDetail
-                {
-                    Id = i.Id,
-                    ContactId = i.ContactId,
-                    Value = i.Value,
-                    Type = i.Type
-                }).ToList()
-            };
-
-        _contactDal.Add(entity);
-        return Ok();
+            _contactService.Add(_contactService.GetPost(model));
+            return Ok();
+        }
+        [HttpDelete]
+        public IActionResult Delete(Entities.Contact entity)
+        {
+            _contactService.Delete(entity);
+            return Ok();
         }
     }                   
 }

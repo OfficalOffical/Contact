@@ -1,3 +1,4 @@
+using Contact.Business;
 using Contact.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,7 @@ namespace Contact.WebApi
             });
             services.AddDbContext<PhoneDBContext>();
             services.AddTransient<IContactDal, ContactDal>();
+            services.AddTransient<IContactService, ContactService>();
 
 
 

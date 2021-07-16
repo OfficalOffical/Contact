@@ -9,5 +9,6 @@ namespace Contact.DataAccess
 {
   public interface IContactDal : IEntityRepository<Entities.Contact>
     {
+       
     }
 }
