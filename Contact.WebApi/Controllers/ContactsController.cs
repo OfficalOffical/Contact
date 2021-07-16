@@ -58,21 +58,19 @@ namespace Contact.WebApi.Controllers
                 Note = model.Note,
                 Birthday = model.Birthday,
                 Company = model.Company,
-                ContactDetails = model.ContactDetails.Select(i => new ContactDetail {
+                ContactDetails = model.ContactDetails.Select(i => new ContactDetail
+                {
+                    Id = i.Id,
+                    ContactId = i.ContactId,
+                    Value = i.Value,
+                    Type = i.Type
+                }).ToList()
+            };
 
-                })ToList();
-
-
-        }.ToList();
+        _contactDal.Add(entity);
         return Ok();
-    }
-
-
-
-    }
-
-            
-        
+        }
+    }                   
 }
 
 
