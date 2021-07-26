@@ -13,7 +13,7 @@ namespace Contact.WebApi
     {
         public static void Main(string[] args)
         {
-            
+            NLog.Common.InternalLogger.LogToConsole = true;
             CreateHostBuilder(args).Build().Run();
         
         }

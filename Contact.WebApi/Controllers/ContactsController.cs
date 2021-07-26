@@ -8,15 +8,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NLog;
 
-
-namespace Contact.WebApi.Controllers
+namespace Contact.WebApi.Controllers 
 {
+    
+    
+        
+
     [Route("api/[controller]")]
     [ApiController]
     public class ContactsController : ControllerBase
     {
         private readonly IContactService _contactService;
+        private static Logger logger = LogManager.GetLogger("ContactRule");
 
         public ContactsController(IContactService contactService)
         {
@@ -26,7 +31,7 @@ namespace Contact.WebApi.Controllers
         [HttpGet]
         public List<ContactModel> Get()
         {
-
+            logger.Info("vololo");
             var data = _contactService.GetList();
 
 
