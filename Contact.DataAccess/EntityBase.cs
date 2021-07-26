@@ -74,6 +74,8 @@ namespace Contact.DataAccess
 
                 //var updatedEntity = context.Entry(entity);
                 //updatedEntity.State = EntityState.Modified;
+
+               
                 context.Update(entity);
                 context.SaveChanges();
             }

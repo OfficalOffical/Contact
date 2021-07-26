@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="C:\Users\sefak\.nuget\packages\nlog.config\4.7.0\contentFiles\any\any\NLog.config" />
     <None Remove="C:\Users\sefak\.nuget\packages\nlog.config\4.7.10\contentFiles\any\any\NLog.config" />
     <None Remove="C:\Users\sefak\.nuget\packages\nlog.schema\4.7.10\contentFiles\any\any\NLog.xsd" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.26" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.10.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
@@ -19,5 +21,8 @@
     <ProjectReference Include="..\Contact.Business\Contact.Business.csproj" />
     <ProjectReference Include="..\Contact.Entities\Contact.Entities.csproj" />
   </ItemGroup>
-
+	
+	<ItemGroup>
+		<Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 </Project>
