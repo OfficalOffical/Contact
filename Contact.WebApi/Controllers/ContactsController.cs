@@ -41,9 +41,15 @@ namespace Contact.WebApi.Controllers
             return Ok();
         }
         [HttpDelete]
-        public IActionResult Delete(Entities.Contact entity)
+        public IActionResult Delete(int EntityId)
         {
-            _contactService.Delete(entity);
+            _contactService.Delete(EntityId);
+            return Ok();
+        }
+        [HttpPut]
+        public IActionResult Update(ContactModel contactModel)
+        {
+            _contactService.Update(contactModel);
             return Ok();
         }
     }                   

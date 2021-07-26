@@ -25,6 +25,31 @@ namespace Contact.Business
             _contactDal.Add(entity);
         }
 
+        public  Entities.Contact ConverterBtoE(ContactModel contactModel)
+        {
+            //contactModel.ContactDetails = new ContactDetailModel;
+            var data = new Entities.Contact
+            {
+                Id = contactModel.Id,
+                Birthday = contactModel.Birthday,
+                Company = contactModel.Company,
+                Name = contactModel.Name,
+                Note = contactModel.Note,
+                Surname = contactModel.Surname,
+                ContactDetails = contactModel.ContactDetails.Select(i => new ContactDetail
+                {
+                    ContactId = i.ContactId,
+                    Id = i.Id,
+                    Type = i.Type,
+                    Value = i.Value
+                }).ToList()
+            };
+
+            return data;
+       
+            
+        }
+
         public List<ContactModel> GetList()
         {
             var data = _contactDal.GetQuery().Include(i => i.ContactDetails).Select(i => new ContactModel
@@ -70,9 +95,18 @@ namespace Contact.Business
             return entity;
         }
 
-        public void Delete(Entities.Contact entity)
+        public void Delete(int entitiesId)
         {
-            _contactDal.Delete(entity);
+            var result = _contactDal.Get(x => x.Id == entitiesId);
+            // Create a control mechanism here 
+            _contactDal.Delete(result);
+        }
+
+        public void Update(ContactModel contactModel)
+        {
+            
+            _contactDal.Update(ConverterBtoE(contactModel));
+            
         }
     }
 }

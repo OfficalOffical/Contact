@@ -8,6 +8,9 @@ namespace Contact.Business
         public void Add(Contact.Entities.Contact entity);
         List<ContactModel> GetList();
         Entities.Contact GetPost(ContactModel model);
-        public void Delete(Entities.Contact entity);
+        public void Delete(int entitiesId);
+        public void Update(ContactModel contactModel);
+
+        public Entities.Contact ConverterBtoE(ContactModel contactModel);
     }
 }
