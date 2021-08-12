@@ -40,6 +40,9 @@ namespace Contact.DataAccess
             }
         }
 
+
+
+
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())

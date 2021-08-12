@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.DataAccess", "Conta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Business", "Contact.Business\Contact.Business.csproj", "{594CB9B7-C452-43AF-AFBF-D54CE9E394BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Core", "Contact.Core\Contact.Core.csproj", "{5CA51E3D-C670-4038-8E27-919B3CB3EFD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Core", "Contact.Core\Contact.Core.csproj", "{5CA51E3D-C670-4038-8E27-919B3CB3EFD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

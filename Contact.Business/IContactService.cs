@@ -12,5 +12,6 @@ namespace Contact.Business
         public void Update(ContactModel contactModel);
 
         public Entities.Contact ConverterBtoE(ContactModel contactModel);
+        
     }
 }

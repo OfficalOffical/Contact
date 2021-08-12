@@ -14,6 +14,7 @@ namespace Contact.Business
     public class ContactService : IContactService
     {
         IContactDal _contactDal;
+        
 
         public ContactService(IContactDal contactDal)
         {
@@ -98,9 +99,14 @@ namespace Contact.Business
         public void Delete(int entitiesId)
         {
             var result = _contactDal.Get(x => x.Id == entitiesId);
-            // Create a control mechanism here 
+            //Create a control mechanism here
             _contactDal.Delete(result);
         }
+
+
+     
+
+        
 
         public void Update(ContactModel contactModel)
         {

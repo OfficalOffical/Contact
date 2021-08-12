@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contact.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Entities
 {
-   public class ContactDetail
+   public class ContactDetail:IEntity
     {
         public int Id { get; set; }
         public int ContactId { get; set; }
