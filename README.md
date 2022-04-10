@@ -1,5 +1,7 @@
 # Contact
-Full stack phone directory app that has relational database and layered architecture inside it 
+Full stack phone directory app that has relational database and layered architecture inside it.
+
+The frontend uses Angular and also uses nlog for logging every crud operation.
 
 The main screen looks like this : 
 
